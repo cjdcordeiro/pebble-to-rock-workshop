@@ -30,11 +30,26 @@
 
 **Got an LXC-related timeout while building the ROCK?**
 
-This could be related with a known networking conflict between Docker and LXD.
-This this quick fix:
+This could be related with a [known networking conflict between Docker and
+LXD](https://documentation.ubuntu.com/lxd/en/latest/howto/network_bridge_firewalld/#prevent-connectivity-issues-with-lxd-and-docker).
+The following command may fix this:
 
 ```bash
 sudo iptables -P FORWARD ACCEPT
+```
+
+If you are still getting the same error (e.g. `craft-providers error: Instance
+setup failed.`), check if the lxd instance is running in the rockcraft project.
+
+```bash
+lxc --project rockcraft list
+```
+
+If it is in a `RUNNING` state, deleting it and running `rockcraft pack` again
+might solve the issue.
+
+```bash
+lxc --project rockcraft delete <instance-id>
 ```
 
 **Are you running Rockcraft in an LXC instance? Is it failing with an LXD error?**
