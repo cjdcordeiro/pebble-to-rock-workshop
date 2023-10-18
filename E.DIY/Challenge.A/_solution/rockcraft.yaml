@@ -1,0 +1,24 @@
+name: challenge-a
+base: ubuntu:22.04
+version: "0.1"
+summary: foo
+description: |
+  foo bar
+license: GPL-3.0
+platforms:
+  amd64:
+
+services:
+  assistant:
+    override: replace
+    startup: enabled
+    on-success: shutdown
+    on-failure: shutdown
+    command: assistant [ -help ]
+
+parts:
+  build-assistant:
+    plugin: go
+    source: .
+    build-snaps:
+      - go/1.20/stable  # or just "go"
