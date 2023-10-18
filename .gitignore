@@ -1,3 +1,4 @@
 .vscode
 *.rock
-!sample_*_amd64.rock
+*.snap
+*.rock
