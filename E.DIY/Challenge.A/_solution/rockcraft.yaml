@@ -1,24 +1,23 @@
 name: challenge-a
 base: ubuntu:22.04
 version: "0.1"
-summary: foo
+summary: An apache2 ROCK
 description: |
-  foo bar
+  A ROCK that launches an Apache web server
 license: GPL-3.0
 platforms:
   amd64:
 
 services:
-  assistant:
+  web:
     override: replace
     startup: enabled
     on-success: shutdown
     on-failure: shutdown
-    command: assistant [ -help ]
+    command: apache2ctl [ -D FOREGROUND ]
 
 parts:
-  build-assistant:
-    plugin: go
-    source: .
-    build-snaps:
-      - go/1.20/stable  # or just "go"
+  install-apache:
+    plugin: nil
+    overlay-packages:
+      - apache2
