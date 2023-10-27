@@ -1,1 +1,29 @@
-# SAMPLE rockcraft.yaml TBD
+name: rockserver
+base: ubuntu@20.04
+version: '0.1'
+summary: A cool ROCKS server
+description: |
+    A cool ROCKS server which says hi
+license: GPL-3.0
+
+platforms:
+    amd64:
+
+services:
+    rockserver:
+        override: replace
+        startup: enabled
+        command: python3 app.py
+        on-failure: shutdown
+
+parts:
+    python-flask:
+        plugin: python
+        source: .
+        python-packages:
+            - Flask
+        stage-packages:
+            - python3-venv
+    files:
+        plugin: dump
+        source: .
