@@ -4,14 +4,14 @@
 
 # Instructions
 
-- There is already a sample `rockcraft.yaml` file in this folder.
+- There is already a sample `rockcraft.yaml` file and `src` code in this folder.
   - If for some reason you don't have it, then simply use the templated
     one from `rockcraft init`.
 
 - Pack the ROCK:
 
     ```bash
-    rockcraft -v
+    rockcraft pack -v
     ```
 
 - Choose a parts lifecycle `<stage>` and try to `--shell-after`:

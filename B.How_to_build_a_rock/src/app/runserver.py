@@ -39,5 +39,9 @@ def index():
     return hello("/")
 
 
-if __name__ == "__main__":
+def main():
     app.run(host=HOST, port=PORT)
+
+
+if __name__ == "__main__":
+    main()
