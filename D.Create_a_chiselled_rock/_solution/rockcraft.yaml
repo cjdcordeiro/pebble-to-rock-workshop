@@ -1,0 +1,36 @@
+name: rockserver
+version: '0.2'
+summary: A cool ROCKS server
+description: |
+    A very small and cool ROCKS server which says hi
+license: GPL-3.0
+
+base: bare
+build-base: ubuntu@20.04
+
+platforms:
+    amd64:
+
+services:
+    rockserver:
+        override: replace
+        startup: enabled
+        command: python3.8 app.py
+        on-failure: shutdown
+        environment:
+            PYTHONPATH: /lib/python3.8/site-packages/
+
+parts:
+    python-flask:
+        plugin: python
+        source: .
+        python-packages:
+            - Flask
+        build-packages:
+            - python3-venv
+        stage-packages:
+            - python3.8_standard
+            - libgcc-s1_libs
+    files:
+        plugin: dump
+        source: .
