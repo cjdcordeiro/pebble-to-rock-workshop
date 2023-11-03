@@ -11,7 +11,7 @@ it's not, while shedding some light about what needs to be done:
 
 ---
 
-**ROCKSTART BADGE:** if you succeed, you can become an official contributor by
+**ROCKSTAR BADGE:** if you succeed, you can become an official contributor by
 submitting your Python slice definitions to <https://github.com/canonical/chisel-releases>.
 
 ## Requirements
