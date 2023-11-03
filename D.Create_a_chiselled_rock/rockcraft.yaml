@@ -1,30 +1,29 @@
 name: my-flask-app
-version: '0.2'
+version: "0.2"
 summary: A cool Flask ROCK
 description: |
-    A cool ROCK for a Flask server that says hi
+  A cool ROCK for a Flask server that says hi
 license: GPL-3.0
-
 base: bare
 build-base: ubuntu@20.04
 
 platforms:
-    amd64:
+  amd64:
 
 environment:
-    PYTHONPATH: /lib/python3.8/site-packages/
+  PYTHONPATH: /lib/python3.8/site-packages/
 
 services:
-    rockserver:
-        override: replace
-        startup: enabled
-        command: app
-        on-failure: shutdown
+  rockserver:
+    override: replace
+    startup: enabled
+    command: app
+    on-failure: shutdown
 
 parts:
-    python-flask:
-        plugin: python
-        source: src
-        stage-packages:
-            - python3.8_standard
-            - libgcc-s1_libs
+  python-flask:
+    plugin: python
+    source: src
+    stage-packages:
+      - python3.8_standard
+      - libgcc-s1_libs
